@@ -18,7 +18,7 @@ public class Brand {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;
-    @OneToMany(mappedBy = "brand") //bu ilşkinin sahibi model
+    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL) //bu ilşkinin sahibi model
     //mappedBy da yazmayan ilişkinin sahibi
     private List<Model> models;
 

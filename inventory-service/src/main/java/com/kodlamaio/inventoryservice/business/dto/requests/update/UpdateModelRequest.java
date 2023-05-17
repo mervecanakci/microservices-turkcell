@@ -13,7 +13,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateModelRequest {
-    @NotBlank
     @NotNull
     private UUID brandId;
     @NotBlank

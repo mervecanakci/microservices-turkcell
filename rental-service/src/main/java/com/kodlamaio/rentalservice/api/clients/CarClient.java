@@ -12,6 +12,6 @@ import java.util.UUID;
 public interface CarClient {
     @GetMapping(value = "/api/cars/check-car-available/{carId}")
     @Retry(name = "check-car-availabilty")
-        //todo
+        //todo:
     ClientResponse checkIfCarAvailable(@PathVariable UUID carId);
 }

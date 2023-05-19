@@ -71,6 +71,12 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.netflix.hystrix</groupId>
+            <artifactId>hystrix-javanica</artifactId>
+            <version>1.5.18</version>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -82,7 +88,7 @@
                 <scope>import</scope>
             </dependency>
 
-          
+
         </dependencies>
     </dependencyManagement>
 

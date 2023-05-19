@@ -11,11 +11,11 @@ import java.util.UUID;
 public interface FilterService {
     List<GetAllFiltersResponse> getAll();
 
-    GetFilterResponse getById(UUID id);
+    GetFilterResponse getById(String id);
 
     void add(Filter filter);
 
-    void delete(UUID id);
+    void delete(String id);
 
     void deleteByCarId(UUID carId);
 
@@ -24,6 +24,11 @@ public interface FilterService {
     // bu tür olasılıklar için modelId ve brandId yi de silmemiz gerekebilir
 
     //bulk delete
-
     void deleteAllByModelId(UUID modelId);
+
+    Filter getByCarId(UUID carId);
 }
+
+
+
+

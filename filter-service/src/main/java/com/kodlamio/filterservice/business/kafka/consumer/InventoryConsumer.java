@@ -1,8 +1,8 @@
 package com.kodlamio.filterservice.business.kafka.consumer;
 
-import com.kodlamaio.commonpackage.events.BrandDeletedEvent;
-import com.kodlamaio.commonpackage.events.CarCreatedEvent;
-import com.kodlamaio.commonpackage.events.CarDeletedEvent;
+import com.kodlamaio.commonpackage.events.inventory.BrandDeletedEvent;
+import com.kodlamaio.commonpackage.events.inventory.CarCreatedEvent;
+import com.kodlamaio.commonpackage.events.inventory.CarDeletedEvent;
 import com.kodlamaio.commonpackage.utils.mappers.ModelMapperService;
 import com.kodlamio.filterservice.business.abstracts.FilterService;
 import com.kodlamio.filterservice.entities.Filter;
@@ -51,7 +51,7 @@ public class InventoryConsumer {
 
 
     public void consume(BrandDeletedEvent event) {
-        var filter = mapper.forRequest().map(event, Filter.class);
+        // var filter = mapper.forRequest().map(event, Filter.class);
         service.deleteAllByBrandId(event.getBrandId());
         log.info("Brand deleted event consumed {}", event);
     }

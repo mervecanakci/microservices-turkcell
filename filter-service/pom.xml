@@ -21,13 +21,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.kodlamaio</groupId>
             <artifactId>common-package</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        
     </dependencies>
 
     <build>

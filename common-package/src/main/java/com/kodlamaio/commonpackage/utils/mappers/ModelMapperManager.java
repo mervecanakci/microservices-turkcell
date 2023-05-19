@@ -3,10 +3,8 @@ package com.kodlamaio.commonpackage.utils.mappers;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
-import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
-@Service
 public class ModelMapperManager implements ModelMapperService {
     private ModelMapper mapper;
 
@@ -16,7 +14,7 @@ public class ModelMapperManager implements ModelMapperService {
                 //false belirsizlikte hata vaerir
                 .setAmbiguityIgnored(true)
                 .setMatchingStrategy(MatchingStrategies.LOOSE);
-               //loose esnek her alan birbirne uymak zorunda değil diyor
+        //loose esnek her alan birbirne uymak zorunda değil diyor
 
         return mapper;
     }

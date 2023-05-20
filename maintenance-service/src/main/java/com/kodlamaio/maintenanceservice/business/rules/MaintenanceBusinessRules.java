@@ -4,6 +4,7 @@ import com.kodlamaio.commonpackage.utils.exceptions.BusinessException;
 import com.kodlamaio.maintenanceservice.api.clients.CarClient;
 import com.kodlamaio.maintenanceservice.repository.MaintenanceRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -12,7 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class MaintenanceBusinessRules {
     private final MaintenanceRepository repository;
-    // @Qualifier("com.kodlamaio.maintenanceservice.api.clients.CarClient")
+    @Qualifier("com.kodlamaio.maintenanceservice.api.clients.CarClient")
     private final CarClient carClient;
 
     public void ensureCarIsAvailable(UUID carId) {

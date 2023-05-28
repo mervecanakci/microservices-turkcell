@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Setter
@@ -21,7 +20,7 @@ public class UpdateMaintenanceRequest {
     @NotBlank
     @Size(min = 2, max = 22222)
     private String information;
-    private boolean isCompleted;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    //  private boolean isCompleted;
+    // private LocalDateTime startDate;
+    // private LocalDateTime endDate;
 }

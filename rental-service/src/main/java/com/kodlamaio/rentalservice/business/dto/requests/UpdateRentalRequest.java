@@ -23,4 +23,6 @@ public class UpdateRentalRequest {
     private int rentedForDays;
     @NotNull
     private LocalDate rentedAt;
+    //  private UUID customerId;
+    //todo: customer ı da ekle zaman bulursan
 }

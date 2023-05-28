@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.UUID;
 
+
 @FeignClient(name = "inventory-service", fallback = CarClientFallback.class)
 public interface CarClient {
+    @Retry(name = "inventory-retry")
     @GetMapping(value = "/api/cars/check-car-available/{carId}")
-    @Retry(name = "check-car-availabilty")
-        //todo:
     ClientResponse checkIfCarAvailable(@PathVariable UUID carId);
 }

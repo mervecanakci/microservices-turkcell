@@ -10,8 +10,8 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.UUID;
 
 public interface CarRepository extends JpaRepository<Car, UUID> {
-    @Modifying
-    @Transactional
+    @Modifying //todo bak
+    @Transactional  //todo bak
     @Query(value = "update Car set state =:state where id =:id")
     void changeStateByCarId(State state, UUID id);
 }

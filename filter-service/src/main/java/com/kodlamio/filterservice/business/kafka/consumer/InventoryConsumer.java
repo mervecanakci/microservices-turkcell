@@ -23,8 +23,6 @@ public class InventoryConsumer {
             topics = "car-created", //car-created ı dinleyecek
             groupId = "car-create"
     )
-
-
     public void consume(CarCreatedEvent event) {
         var filter = mapper.forRequest().map(event, Filter.class);
         service.add(filter);
@@ -36,8 +34,6 @@ public class InventoryConsumer {
             topics = "car-deleted", //car-deleted ı dinleyecek
             groupId = "car-delete"
     )
-
-
     public void consume(CarDeletedEvent event) {
         service.deleteByCarId(event.getCarId());
         log.info("Car deleted event consumed {}", event);
@@ -48,8 +44,6 @@ public class InventoryConsumer {
             topics = "brand-deleted", //brand-deleted ı dinleyecek
             groupId = "brand-delete"
     )
-
-
     public void consume(BrandDeletedEvent event) {
         // var filter = mapper.forRequest().map(event, Filter.class);
         service.deleteAllByBrandId(event.getBrandId());

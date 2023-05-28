@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 public class RentalConsumer {
     private final CarService service;
 
-
     @KafkaListener(
             topics = "rental-created",
             groupId = "inventory-rental-create"

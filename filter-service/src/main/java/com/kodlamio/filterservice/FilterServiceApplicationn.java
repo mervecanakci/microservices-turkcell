@@ -7,10 +7,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @EnableDiscoveryClient
 @SpringBootApplication(scanBasePackages = {Paths.ConfigurationBasePackage, Paths.Filter.ServiceBasePackage})
-public class FilterServiceApplication {
+public class FilterServiceApplicationn {
 
     public static void main(String[] args) {
-        SpringApplication.run(FilterServiceApplication.class, args);
+        SpringApplication.run(FilterServiceApplicationn.class, args);
     }
 
 }

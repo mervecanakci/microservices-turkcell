@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        default-label: master
+        git:
+          uri: https://github.com/mervecanakci/config-server-t2
+server:
+  port: 8888

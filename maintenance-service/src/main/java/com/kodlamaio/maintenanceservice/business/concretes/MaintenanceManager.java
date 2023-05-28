@@ -146,3 +146,4 @@ public class MaintenanceManager implements MaintenanceService {
 //sebebi log tutuyoruz
 
 }
+// todo: her şey yaptığın gibi

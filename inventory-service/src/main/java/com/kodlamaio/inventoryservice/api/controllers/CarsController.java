@@ -1,5 +1,7 @@
 package com.kodlamaio.inventoryservice.api.controllers;
 
+
+import com.kodlamaio.commonpackage.utils.constants.Roles;
 import com.kodlamaio.commonpackage.utils.dto.ClientResponse;
 import com.kodlamaio.inventoryservice.business.abstracts.CarService;
 import com.kodlamaio.inventoryservice.business.dto.requests.create.CreateCarRequest;
@@ -11,6 +13,10 @@ import com.kodlamaio.inventoryservice.business.dto.responses.update.UpdateCarRes
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,12 +29,22 @@ public class CarsController {
     private final CarService service;
 
     @GetMapping
+    //Secured, daha basit kurallar için kullanılır
+    // Secured, PreAuthorize, PostAuthorize
+    // @Secured("ROLE_admin")
+    @PreAuthorize(Roles.AdminAndUser) // todo: SPeL
     public List<GetAllCarsResponse> getAll() {
         return service.getAll();
     }
 
     @GetMapping("/{id}")
-    public GetCarResponse getById(@PathVariable UUID id) {
+    @PostAuthorize("hasRole('admin') || returnObject.modelYear == 2019")
+    public GetCarResponse getById(@PathVariable UUID id, @AuthenticationPrincipal Jwt jwt) {
+        System.out.println(jwt.getClaims().get("email"));
+        System.out.println(jwt.getClaims().get("sub"));
+        System.out.println(jwt.getClaims().get("given_name"));
+        System.out.println(jwt.getClaims().get("family_name"));
+
         return service.getById(id);
     }
 

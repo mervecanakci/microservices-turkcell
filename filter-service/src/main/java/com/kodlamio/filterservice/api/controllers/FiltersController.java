@@ -44,7 +44,7 @@ public class FiltersController {
     }
 
     @GetMapping("/{id}")
-    public GetFilterResponse getById(@PathVariable UUID id) {
+    public GetFilterResponse getByIId(@PathVariable UUID id) {
         return service.getById(id);
     }
 }

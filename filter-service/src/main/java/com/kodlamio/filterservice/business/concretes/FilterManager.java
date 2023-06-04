@@ -33,7 +33,7 @@ public class FilterManager implements FilterService {
 
     @Override
     public GetFilterResponse getById(UUID id) {
-        var filter = repository.findById((id)).orElseThrow();
+        var filter = repository.findById(id).orElseThrow();
         var response = mapper.forResponse().map(filter, GetFilterResponse.class);
 
         return response;

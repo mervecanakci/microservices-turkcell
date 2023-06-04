@@ -11,6 +11,18 @@ services:
     environment:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
 
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: keycloak-t2
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    command: start-dev
+    volumes:
+      - .:/opt/jboss/keycloak/imports
+
   mongodb:
     container_name: turkcell2-filterdb
     image: mongo
@@ -23,11 +35,11 @@ services:
     container_name: maintenancedb-t2
     image: mysql
     ports:
-      - "3306:3306"
+      - "3305:3305"
     environment:
       - MYSQL_ROOT_PASSWORD=12345
-      - MYSQL_TCP_PORT=3306
-      - VIRTUAL_PORT=3306
+      - MYSQL_TCP_PORT=3305
+      - VIRTUAL_PORT=3305
     volumes:
       - maintenancedb_data:/data/db
 

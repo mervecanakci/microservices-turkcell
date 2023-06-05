@@ -31,17 +31,6 @@ services:
     volumes:
       - mongodb_data:/data/db
 
-  maintenancedb:
-    container_name: maintenancedb-t2
-    image: mysql
-    ports:
-      - "3305:3305"
-    environment:
-      - MYSQL_ROOT_PASSWORD=12345
-      - MYSQL_TCP_PORT=3305
-      - VIRTUAL_PORT=3305
-    volumes:
-      - maintenancedb_data:/data/db
 
   paymentdb:
     container_name: paymentdb-t2
@@ -58,5 +47,4 @@ services:
 volumes:
   kafka_data:
   mongodb_data:
-  maintenancedb_data:
   paymentdb_data:

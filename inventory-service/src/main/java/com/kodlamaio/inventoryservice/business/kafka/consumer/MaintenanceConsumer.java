@@ -44,4 +44,3 @@ public class MaintenanceConsumer {
         log.info("Maintenance completed event consumed {}", event);
     }
 }
-

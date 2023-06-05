@@ -13,6 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class MaintenanceBusinessRules {
     private final MaintenanceRepository repository;
+    // @Qualifier("com.kodlamaio.maintenanceservice.api.clients.CarClient")
     @Qualifier("com.kodlamaio.maintenanceservice.api.clients.CarClient")
     private final CarClient carClient;
 
@@ -48,6 +49,4 @@ public class MaintenanceBusinessRules {
         //bakımda olan arabayı tekrar bakıjma gönderemezsin
     }
 }
-
-
 

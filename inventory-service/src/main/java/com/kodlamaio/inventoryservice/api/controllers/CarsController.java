@@ -28,11 +28,14 @@ import java.util.UUID;
 public class CarsController {
     private final CarService service;
 
-    @GetMapping
-    //Secured, daha basit kurallar için kullanılır
-    // Secured, PreAuthorize, PostAuthorize
-    // @Secured("ROLE_admin")
-    @PreAuthorize(Roles.AdminAndUser) // todo: SPeL
+    @GetMapping // gelall işlemine security uyguladık
+    // todo: bak Secured, PreAuthorize, PostAuthorize
+    //PostFilter, PreFilter = parametredeki bir koleksiyona uygulanıyor
+    // @Secured("ROLE_admin") daha basit kurallar için parantez içi gibi ROLE yazdık bu bir prefix
+    // bu işlemle yapmak istediğimiz rol ü admin olanlar sadece kullanabilsin getAll ı
+    // tam olarak bu ifadeyi tanımıyor bu nedenle converter aracılığıyla dönüştürdük
+    //ROLE_admin; özellikle bu şekilde olmasının nedeni spring security bu şekilde çalışıyor
+    @PreAuthorize(Roles.AdminAndUser) // SPeL //todo common da security de convert ettik
     public List<GetAllCarsResponse> getAll() {
         return service.getAll();
     }

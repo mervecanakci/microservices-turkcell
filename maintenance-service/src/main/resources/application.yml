@@ -1,6 +1,6 @@
 spring:
   application:
-    name: maintenance-service
+    name: maintanence-service
   cloud:
     config:
       profile: dev

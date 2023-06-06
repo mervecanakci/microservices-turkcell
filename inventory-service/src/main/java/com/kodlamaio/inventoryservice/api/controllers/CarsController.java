@@ -1,6 +1,5 @@
 package com.kodlamaio.inventoryservice.api.controllers;
 
-
 import com.kodlamaio.commonpackage.utils.constants.Roles;
 import com.kodlamaio.commonpackage.utils.dto.ClientResponse;
 import com.kodlamaio.inventoryservice.business.abstracts.CarService;
@@ -35,13 +34,18 @@ public class CarsController {
     // bu işlemle yapmak istediğimiz rol ü admin olanlar sadece kullanabilsin getAll ı
     // tam olarak bu ifadeyi tanımıyor bu nedenle converter aracılığıyla dönüştürdük
     //ROLE_admin; özellikle bu şekilde olmasının nedeni spring security bu şekilde çalışıyor
+    //@PreAuthorize("hasRole("user")and hasRole("admin")") // alttaki gibi de bu şekilde de olabilir
     @PreAuthorize(Roles.AdminAndUser) // SPeL //todo common da security de convert ettik
+    //PreAuthorize: istek atılmadan önce secured ile aynı şekilde çalışıyor daha complex sadece
+    //todo SPeL: spring expration language
     public List<GetAllCarsResponse> getAll() {
         return service.getAll();
     }
 
     @GetMapping("/{id}")
+    //
     @PostAuthorize("hasRole('admin') || returnObject.modelYear == 2019")
+    // @AuthenticationPrincipal Jwt jwt: bu benim token la yolladığım jwt oluyor, artık buna ulaşabileceğim
     public GetCarResponse getById(@PathVariable UUID id, @AuthenticationPrincipal Jwt jwt) {
         System.out.println(jwt.getClaims().get("email"));
         System.out.println(jwt.getClaims().get("sub"));

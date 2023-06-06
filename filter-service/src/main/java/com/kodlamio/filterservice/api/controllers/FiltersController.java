@@ -19,27 +19,27 @@ public class FiltersController {
     private final FilterService service;
 
 
-    /*   @PostConstruct //db de bir tane ekleme işlemi yapıcak
-       public void createDb() {
-           var filter = new Filter();
-           filter.setBrandName("test");
-           filter.setModelName("testx");
-           service.add(filter);
-       }
-       //? veri tabanı oluştu bir kere çalıştırdık o nedenle kaldırdık daha
-       // var filter.... bu da veri olsun diye
-       */
-//    @PostConstruct
-//    public void createDb() {
-//        var filter = new Filter();
-//        filter.setBrandName("test");
-//        filter.setModelName("testx");
-//        service.add(filter);
-//
-//    }
+/*    @PostConstruct //db de bir tane ekleme işlemi yapıcak
+    public void createDb() {
+        var filter = new Filter();
+        filter.setBrandName("test");
+        filter.setModelName("testx");
+        service.add(filter);
+    }*/
+    //? veri tabanı oluştu bir kere çalıştırdık o nedenle kaldırdık daha
+    // var filter.... bu da veri olsun diye
+/*
+    @PostConstruct
+    public void createDb() {
+        var filter = new Filter();
+        filter.setBrandName("test");
+        filter.setModelName("testx");
+        service.add(filter);
+
+    }*/
 
     @GetMapping
-    public List<GetAllFiltersResponse> getAll() {
+    List<GetAllFiltersResponse> getAll() {
         return service.getAll();
     }
 

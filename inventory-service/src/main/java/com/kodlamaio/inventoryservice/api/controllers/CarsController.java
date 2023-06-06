@@ -46,12 +46,14 @@ public class CarsController {
     //
     @PostAuthorize("hasRole('admin') || returnObject.modelYear == 2019")
     // @AuthenticationPrincipal Jwt jwt: bu benim token la yolladığım jwt oluyor, artık buna ulaşabileceğim
+    // mesela admin değil ama araç model yılı 2019 araç gösterilicek
+    // bunu farklı şekilde düzenleyebilirsin
     public GetCarResponse getById(@PathVariable UUID id, @AuthenticationPrincipal Jwt jwt) {
         System.out.println(jwt.getClaims().get("email"));
         System.out.println(jwt.getClaims().get("sub"));
         System.out.println(jwt.getClaims().get("given_name"));
         System.out.println(jwt.getClaims().get("family_name"));
-
+// console a bilgilerini yazdırdık
         return service.getById(id);
     }
 

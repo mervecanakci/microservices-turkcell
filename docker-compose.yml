@@ -31,6 +31,13 @@ services:
     volumes:
       - mongodb_data:/data/db
 
+  invoicedb:
+    container_name: invoicedb
+    image: mongo
+    ports:
+      - "27018:27017"
+    volumes:
+      - invoicedb_data:/data/db
 
   paymentdb:
     container_name: paymentdb-t2
@@ -47,4 +54,5 @@ services:
 volumes:
   kafka_data:
   mongodb_data:
+  invoicedb_data:
   paymentdb_data:

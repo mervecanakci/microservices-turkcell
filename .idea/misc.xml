@@ -13,8 +13,8 @@
         <option value="$PROJECT_DIR$/rental-service/pom.xml" />
         <option value="$PROJECT_DIR$/payment-service/pom.xml" />
         <option value="$PROJECT_DIR$/config-server/pom.xml" />
-        <option value="$PROJECT_DIR$/../common-package-t2/pom.xml" />
         <option value="$PROJECT_DIR$/maintenance-service/pom.xml" />
+        <option value="$PROJECT_DIR$/invoice-service/pom.xml" />
       </list>
     </option>
   </component>

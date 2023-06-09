@@ -1,0 +1,39 @@
+global:
+  scrape_interval: 15s # By default, scrape targets every 15 seconds. 15 saniyede bir metrikleri yenilicek
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. kurallar belirlenebilir
+
+rule_files:
+#  - "alert.rules.yml"
+#  - "rules.yml"
+
+scrape_configs: # servisi belirticez
+  - job_name: 'filter-service'  # hangi servisi scrape ediceksek onu yazarız
+    scrape_interval: 2s   # hangi sıklıkla güncellencek
+    metrics_path: '/filter-service/actuator/prometheus' # metriklere nereden ulaşağını veriyoruz
+    static_configs:
+      - targets: [ 'host.docker.internal:9010' ] # apigateway yolunu veriyoruz; çünkü orada çalışıyor
+  - job_name: 'inventory-service'
+    scrape_interval: 2s
+    metrics_path: '/inventory-service/actuator/prometheus'
+    static_configs:
+      - targets: [ 'host.docker.internal:9010' ]
+  - job_name: 'maintenance-service'
+    scrape_interval: 2s
+    metrics_path: '/maintenance-service/actuator/prometheus'
+    static_configs:
+      - targets: [ 'host.docker.internal:9010' ]
+  - job_name: 'payment-service'
+    scrape_interval: 2s
+    metrics_path: '/payment-service/actuator/prometheus'
+    static_configs:
+      - targets: [ 'host.docker.internal:9010' ]
+  - job_name: 'rental-service'
+    scrape_interval: 2s
+    metrics_path: '/rental-service/actuator/prometheus'
+    static_configs:
+      - targets: [ 'host.docker.internal:9010' ]
+  - job_name: 'invoice-service'
+    scrape_interval: 2s
+    metrics_path: '/invoice-service/actuator/prometheus'
+    static_configs:
+      - targets: [ 'host.docker.internal:9010' ]

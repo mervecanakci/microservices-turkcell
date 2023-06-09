@@ -14,4 +14,5 @@ public interface CarRepository extends JpaRepository<Car, UUID> {
     @Transactional  //todo bak
     @Query(value = "update Car set state =:state where id =:id")
     void changeStateByCarId(State state, UUID id);
+    
 }

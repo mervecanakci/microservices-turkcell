@@ -1,4 +1,5 @@
 package com.kodlamaio.paymentservice.business.concretes;
+
 import com.kodlamaio.commonpackage.utils.dto.ClientResponse;
 import com.kodlamaio.commonpackage.utils.dto.CreateRentalPaymentRequest;
 import com.kodlamaio.commonpackage.utils.exceptions.BusinessException;
@@ -30,10 +31,10 @@ public class PaymentManager implements PaymentService {
 
     @Override
     public List<GetAllPaymentsResponse> getAll() {
-        var brands = repository.findAll();
-        var response = brands
+        var payments = repository.findAll();
+        var response = payments
                 .stream()
-                .map(brand -> mapper.forResponse().map(brand, GetAllPaymentsResponse.class))
+                .map(payment -> mapper.forResponse().map(payment, GetAllPaymentsResponse.class))
                 .toList();
 
         return response;
@@ -42,8 +43,8 @@ public class PaymentManager implements PaymentService {
     @Override
     public GetPaymentResponse getById(UUID id) {
         rules.checkIfPaymentExists(id);
-        var brand = repository.findById(id).orElseThrow();
-        var response = mapper.forResponse().map(brand, GetPaymentResponse.class);
+        var payment = repository.findById(id).orElseThrow();
+        var response = mapper.forResponse().map(payment, GetPaymentResponse.class);
 
         return response;
     }
@@ -51,8 +52,8 @@ public class PaymentManager implements PaymentService {
     @Override
     public CreatePaymentResponse add(CreatePaymentRequest request) {
         rules.checkIfCardNumberExists(request.getCardNumber());
-        var brand = mapper.forRequest().map(request, Payment.class);
-        var createdPayment = repository.save(brand);
+        var payment = mapper.forRequest().map(request, Payment.class);
+        var createdPayment = repository.save(payment);
         var response = mapper.forResponse().map(createdPayment, CreatePaymentResponse.class);
 
         return response;
@@ -61,10 +62,10 @@ public class PaymentManager implements PaymentService {
     @Override
     public UpdatePaymentResponse update(UUID id, UpdatePaymentRequest request) {
         rules.checkIfPaymentExists(id);
-        var brand = mapper.forRequest().map(request, Payment.class);
-        brand.setId(id);
-        repository.save(brand);
-        var response = mapper.forResponse().map(brand, UpdatePaymentResponse.class);
+        var payment = mapper.forRequest().map(request, Payment.class);
+        payment.setId(id);
+        repository.save(payment);
+        var response = mapper.forResponse().map(payment, UpdatePaymentResponse.class);
 
         return response;
     }
